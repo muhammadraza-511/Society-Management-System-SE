@@ -1,0 +1,359 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Society</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Include Font Awesome CSS -->
+    <style>
+        /* Your CSS styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%),url('@Url.Content("~/img/gate.jpg")');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            
+           
+        }
+        
+        nav {
+            display: flex;
+            padding: 0% 6%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            nav img {
+                width: 150px;
+            }
+
+        .nav-links {
+            flex: 1;
+            text-align: center;
+        }
+
+            .nav-links ul li {
+                list-style: none;
+                margin-top: 50px;
+                margin-left: 62px;
+                font-size: 20px;
+                display: inline-block;
+                padding: 10px 12px;
+                position: relative;
+            }
+
+                .nav-links ul li a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 13px;
+                }
+
+                .nav-links ul li::after {
+                    content: '';
+                    width: 0%;
+                    height: 2px;
+                    background: #e9e4e3;
+                    display: block;
+                    margin: auto;
+                    transition: 0.5s;
+                }
+
+                .nav-links ul li:hover::after {
+                    width: 100%;
+                }
+
+        nav .fa {
+            display: none;
+        }
+
+        .textBox {
+            width: 90%;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+
+            .textBox h1 {
+                font-size: 62px;
+            }
+
+            .textBox p {
+                margin: 10px 0 40px;
+                font-size: 14px;
+                color: #fff;
+            }
+        .join{
+   display: inline-block;
+   text-decoration: none;
+   color: #fff;
+   border: 1px solid #fff ;
+   padding: 12px 34px;
+   font-size: 13px;
+   background: transparent;
+
+   position: relative;
+   cursor:pointer ;
+ }
+ .join :hover{
+                border: 1px solid #dbae5f;
+                background: #dbae5f;
+   transition: 1s;
+ } 
+
+/* .form-g{
+   width: 250px;
+   height: 380px;
+   background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+   position: absolute;
+   top: -20;
+   left: 450px; ;
+   border-radius: 10px;
+   padding: 25px;
+
+ }
+ .form-g h2{
+   width: 200px;
+   text-align: center;
+   color: #fff;
+   font-size: 22px;
+   background-color: #dbae5f;
+   border-radius: 10px;
+   margin: 2px;
+   padding: 8px;
+ }
+ .form-g input{
+     width: 240px;
+     height:35px;
+     background: transparent;
+                border-bottom: 1px solid #dbae5f border-top:none;
+     border-right:none;
+     border-left: none;
+     color: #fff;
+     font-size:15px;
+     letter-spacing:1px;
+     margin-top:30px;
+  
+ }*/
+                       .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0); /* Set background color to fully transparent */
+            z-index: 1; /* Ensure container is above other elements */
+        }
+
+        .form {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 50%);
+            padding: 25px;
+        }
+
+        .form h2 {
+            text-align: center;
+            color: #fff;
+            font-size: 22px;
+            margin: 2px;
+            padding: 8px;
+        }
+
+        .form input {
+            width: calc(100% - 20px);
+            height: 35px;
+            background: transparent;
+            border: 1px solid #dbae5f;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            padding: 5px;
+        }
+
+                .role-select {
+            position: relative;
+        }
+
+        #selectedRole {
+            width: calc(100% - 100px);
+        }
+
+        #selectRoleBtn {
+            position: absolute;
+            right: 0;
+        }
+
+        .role-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .role-option {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .role-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .button {
+            width: calc(100% - 20px);
+            margin-top: 20px;
+            border-radius: 0;
+            padding: 10px;
+            transition: 0.5s;
+        }
+
+        .button:hover {
+            background-color: #dbae5f;
+        }
+
+        .link {
+            margin-top: 10px;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .button:hover {
+                    background-color: #dbae5f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="header">
+        <nav>
+           @* <a href="index.html"><img src="logosmall.png"></a>*@
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">CONTACT</a></li>
+                    <li><a href="#"onclick="showLogin()">LOGIN</a></li>
+                </ul>
+            </div>
+           
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class="textBox">
+            <h1>RA HOUSING</h1>
+            <p>Welcome to RA Housing, where community thrives and comfort meets convenience! <br>Our vibrant neighborhood offers an unparalleled blend of modern living and timeless charm. <br>With meticulously designed homes, lush green spaces, and a host of amenities tailored to enhance your lifestyle,<br> RA is more than just a place to reside—it's a community where neighbors become friends and every moment feels like home. <br>Join us in creating memories that last a lifetime in the perfect setting for your story to unfold</p>
+            <a href="AdminDash" onclick="showLogin()" class="join">Join us</a>
+        </div>
+        <div class="loginBox" id="loginBox" style="display: none;"> <!-- Added loginBox and set display to none -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 offset-md-4 form">
+                        <h2 class="text-center">LOGIN</h2>
+                        <form onsubmit="return loginUser()">
+                            <div class="form-group">
+                                <input type="email" id="username" name="email" placeholder="Enter Email Here" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" placeholder="Enter Password Here" class="form-control">
+                            </div>
+
+                            <!-- Dropdown menu for selecting role -->
+                            <div class="role-select">
+                <select id="selectedRole" name="selectedRole" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="resident">Resident</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
+                            <button class="button" type="submit">Login</button>
+                            <p class="link">Don't have an account? <a href="register">Sign up here</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+                <p id="loginMessage" style="color: red;"></p>
+            </div>
+    </section>
+ 
+    <script>
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        function showMenu() {
+            var navLinks = document.getElementById("navLinks");
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            var navLinks = document.getElementById("navLinks");
+            navLinks.style.right = "-200";
+        }
+        function showLogin() {
+            var textBox = document.querySelector(".textBox"); // Changed to select by class
+            var loginBox = document.getElementById("loginBox");
+
+            if (textBox.style.display === "block") {
+                textBox.style.display = "none";
+                loginBox.style.display = "block";
+            } else {
+                textBox.style.display = "block";
+                loginBox.style.display = "none";
+            }
+        }
+
+    function loginUser() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+    
+        if (username === "example" && password === "password") {
+      /*      // Successful login, redirect or perform other actions*/
+            alert("Login successful!");
+            return true; 
+        } else {
+            /*// Failed login, display error message*/
+            document.getElementById("loginMessage").textContent = "Invalid username or password.";
+            return false; 
+        }
+            function selectRole(role) {
+                console.log("Selected role: " + role);
+                // Perform actions based on the selected role
+            }
+
+    }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

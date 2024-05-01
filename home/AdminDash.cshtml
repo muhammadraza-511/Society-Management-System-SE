@@ -1,0 +1,109 @@
+﻿@page "/AdminDash"
+@model WebApplication1.Pages.Shared.AdminDashModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url('@Url.Content("~/img/housess.jpg")');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        .dashboard {
+
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .dashboard-options {
+            list-style: none;
+            padding: 0;
+        }
+
+            .dashboard-options li {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+                .dashboard-options li a {
+                    text-decoration: none;
+                    display: block;
+                    padding: 15px 20px;
+                    border: 2px solid transparent;
+                    border-radius: 8px;
+                    transition: border-color 0.3s ease;
+                }
+
+                    .dashboard-options li a:hover {
+                        border-color: rgba(0, 0, 0, 0.3);
+                    }
+
+        .option-name {
+            color: rgb(3, 1, 1);
+            font-size: 15px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+ <body>
+    <section class="header">
+    <div class="dashboard">
+        <h1>Welcome, Admin</h1>
+        <ul class="dashboard-options">
+            
+            <li>
+                <a href="announcements">
+                    <i class='bx bx-bell'></i>
+                    <span class="option-name">Announcements</span>
+                </a>
+            </li>
+            <li>
+                <a href="maintenance">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="option-name">Maintenance Request</span>
+                </a>
+            </li>
+            <li>
+                <a href="due-bill">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="option-name">Due Bill</span>
+                </a>
+            </li>
+            <li>
+                <a href="events">
+                    <i class='bx bx-calendar-event'></i>
+                    <span class="option-name">Events</span>
+                </a>
+            </li>
+            <li>
+                <a href="members">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="option-name">Members</span>
+                </a>
+            </li>
+            <li>
+                <a href="staff">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="option-name">Staff</span>
+                </a>
+            </li>
+            <li>
+                <a href="logout">
+                    <i class='bx bx-log-out'></i>
+                    <span class="option-name">Log out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+   </section>
+ </body>
+ </html>
