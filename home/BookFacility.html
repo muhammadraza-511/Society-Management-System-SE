@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book_F</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Montserrat", sans-serif;
+        }
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(housess.jpg);
+            background-position: center;
+            background-size: cover;
+            position:absolute;
+        }
+
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 240px;
+            background: #d8d1c7;
+            transition: all 0.5s ease;
+        }
+        .sidebar.active {
+            width: 60px;
+        }
+        .sidebar .logo-details {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .logo-details i {
+            font-size: 28px;
+            font-weight: 500;
+            color: rgb(3, 1, 1);
+            min-width: 60px;
+            text-align: center;
+        }
+        .sidebar .logo-details .logo_name {
+            color: rgb(3, 1, 1);
+            font-size: 24px;
+            font-weight: 500;
+            margin-left: 7px;
+        }
+        .sidebar .nav-links {
+            margin-top: 10px;
+        }
+        .sidebar .nav-links li {
+            position: relative;
+            list-style: none;
+            height: 50px;
+        }
+        .sidebar .nav-links li a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+        .sidebar .nav-links li a.active {
+            background: #a6a29a;
+        }
+        .sidebar .nav-links li a:hover {
+            background: #a6a29a;
+        }
+        .sidebar .nav-links li i {
+            min-width: 60px;
+            text-align: center;
+            font-size: 18px;
+            color: rgb(3, 1, 1);
+        }
+        .sidebar .nav-links li a .links_name {
+            color: rgb(3, 1, 1);
+            font-size: 15px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .sidebar .nav-links .log_out {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .home-section nav {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            background: #d8d1c7;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: calc(100% - 240px);
+            left: 240px;
+            right: 10px;
+            z-index: 50;
+            padding: 0 20px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        .home-section nav .profile-details {
+            display: flex;
+            align-items: center;
+            margin-right: 50px;
+            border: 2px solid #efeef1;
+            border-radius: 6px;
+            height: 50px;
+            min-width: 90px;
+            padding: 0 15px 0 2px;
+        }
+        nav .profile-details .admin_name {
+            font-size: 15px;
+            font-weight: 500;
+            margin-right: 40px;
+            color: #333;
+            margin: 0 10px;
+            white-space: nowrap;
+        }
+        nav .profile-details i {
+            font-size: 25px;
+            color: #333;
+        }
+        form {
+            margin-top: 100px;
+            margin-left: 400px;
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="date"],
+        input[type="time"],
+        input[type="tel"],
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 80%;
+            align-items: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-details">
+                <a href="" >
+                    <span class="logo_name"><i class="fa fa-home"></i>RA HOUSING</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="resident.html" >
+                        <span class="links_name"><i class="fa fa-bars" aria-hidden="true"></i>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Announcement.html">
+                        <span class="links_name"><i class="fa fa-bullhorn" aria-hidden="true"></i>Announcement</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reqMaintainence.html">
+                        <span class="links_name"><i class="fa fa-building" aria-hidden="true"></i>Maintenance Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="visitor.html">
+                        <span class="links_name"><i class="fa fa-car" aria-hidden="true"></i>Visitor</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="BookFacility.html" class="active" >
+                        <span class="links_name"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Book Facility</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="SEvent.html">
+                        <span class="links_name"><i class="fa fa-calendar-o" aria-hidden="true"></i>Events</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lost_found.html">
+                        <span class="links_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i>Lost and Found</span>
+                    </a>
+                </li>
+                <li class="log_out">
+                    <a href="index.html">
+                        <span class="links_name"><i class="fa fa-sign-out" aria-hidden="true"></i>Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Booking Form -->
+        <form id="bookingForm" class="home-section">
+            <h1>Book Facility</h1>
+            <label for="eventType">Select Event Type:</label>
+            <select id="eventType" name="eventType">
+                <option value="marriage">Marriage</option>
+                <option value="party">Party</option>
+            </select>
+    
+            <!-- Dropdown for Marriage Halls -->
+            <div id="marriageHallOptions" style="display: none;">
+                <label for="marriageHall">Select Marriage Hall:</label>
+                <select id="marriageHall" name="marriageHall">
+                    <option value="hall1">Hall 1</option>
+                    <option value="hall2">Hall 2</option>
+                </select>
+            </div>
+    
+            <!-- Dropdown for Party Lawns -->
+            <div id="partyLawnOptions" style="display: none;">
+                <label for="partyLawn">Select Party Lawn:</label>
+                <select id="partyLawn" name="partyLawn">
+                    <option value="lawn1">Lawn 1</option>
+                    <option value="lawn2">Lawn 2</option>
+                </select>
+            </div>
+    
+            <!-- Additional Booking Details -->
+            <label for="bookingDate">Booking Date:</label>
+            <input type="date" id="bookingDate" name="bookingDate" required><br>
+    
+            <label for="bookingTime">Booking Time:</label>
+            <input type="time" id="bookingTime" name="bookingTime" required><br>
+    
+            <label for="contactNumber">Contact Number:</label>
+            <input type="tel" id="contactNumber" name="contactNumber" required><br>
+    
+            <input type="submit" value="Book Now">
+        </form>
+    </section>
+    <!-- Your JavaScript code -->
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting in the traditional way
+            
+            // Get form data
+            var formData = new FormData(this);
+            
+            // Make AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'BookFacility.php', true);
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // Handle successful response
+                    alert(xhr.responseText); // Display response from server (if any)
+                    // Optionally, you can reset the form after successful submission
+                    document.getElementById('bookingForm').reset();
+                } else {
+                    // Handle error response
+                    alert('Error: ' + xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                // Handle connection error
+                alert('Error: Connection failed');
+            };
+            xhr.send(formData); // Send form data as the request body
+        });
+
+        document.getElementById('eventType').addEventListener('change', function() {
+            var eventType = this.value;
+            if (eventType === 'marriage') {
+                document.getElementById('marriageHallOptions').style.display = 'block';
+                document.getElementById('partyLawnOptions').style.display = 'none';
+            } else if (eventType === 'party') {
+                document.getElementById('marriageHallOptions').style.display = 'none';
+                document.getElementById('partyLawnOptions').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Society</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+<body>
+    
+<section class="header">
+    <nav>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="resident.html">ABOUT</a></li>
+                <li><a href="">CONTACT</a></li>
+                <li><a href="#" onclick="showLogin()">LOGIN</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="textBox">
+        <h1>RA HOUSING</h1>
+        <p>Welcome to RA Housing, where community thrives and comfort meets convenience! <br>Our vibrant neighborhood offers an unparalleled blend of modern living and timeless charm. <br>With meticulously designed homes, lush green spaces, and a host of amenities tailored to enhance your lifestyle,<br> RA is more than just a place to reside—it's a community where neighbors become friends and every moment feels like home. <br>Join us in creating memories that last a lifetime in the perfect setting for your story to unfold</p>
+        <a href="selection.html" onclick="showLogin()" class="join">Join us</a>
+    </div>
+    <div class="loginBox" id="loginBox" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-md-4 form">
+                    <h2 class="text-center">LOGIN</h2>
+                    <form action="login.php" method="post">
+                        <div class="form-group">
+                            <input type="email" id="username" name="email" placeholder="Enter Email Here" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" name="password" placeholder="Enter Password Here" class="form-control">
+                        </div>
+                        <button class="button" type="submit">Login</button>
+                        <p class="link" style="color:white;" >Don't have an account? <a href="selection.html">Sign up here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <p id="loginMessage" style="color: red;"></p>
+    </div>
+</section>
+
+<script>
+    function showMenu() {
+        var navLinks = document.getElementById("navLinks");
+        navLinks.style.right = "0";
+    }
+    function hideMenu() {
+        var navLinks = document.getElementById("navLinks");
+        navLinks.style.right = "-200";
+    }
+    function showLogin() {
+        var textBox = document.querySelector(".textBox");
+        var loginBox = document.getElementById("loginBox");
+
+        if (textBox.style.display === "block") {
+            textBox.style.display = "none";
+            loginBox.style.display = "block";
+        } else {
+            textBox.style.display = "block";
+            loginBox.style.display = "none";
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

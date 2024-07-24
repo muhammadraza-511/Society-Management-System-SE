@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Menu</title>
+    <style>
+        /* Your CSS styles here */
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+        
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -200px; /* Hide initially */
+            width: 200px;
+            height: 100%;
+            background-color: #333;
+            transition: left 0.3s ease;
+        }
+        
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            padding-top: 20px;
+        }
+        
+        .menu li {
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            border-bottom: 1px solid #666;
+        }
+        
+        .menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .menu li:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-icon">&#9776;</div>
+    <div class="menu">
+        <ul>
+            <li><a href="admin_view_student_details.html">View Student Details</a></li>
+            <li><a href="admin_view_participating_organization.html">View Participating Organization</a></li>
+            <li><a href="admin_announce_job_fair_days.html">Announce Job Fair Days</a></li>
+            <li><a href="admin_schedule_interview.html">Schedule Interview of Approved Students</a></li>
+            <li><a href="admin_allocate_rooms.html">Allocate Rooms to Organizations</a></li>
+        </ul>
+    </div>
+    
+    <h1 id="welcomeMessage"></h1>
+    <script>
+        // Get user's name from URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+
+        // Display welcome message with user's name
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        welcomeMessage.textContent = `Welcome, ${name}!`;
+        
+        // Toggle menu
+        const menuIcon = document.querySelector('.menu-icon');
+        const menu = document.querySelector('.menu');
+        menuIcon.addEventListener('click', function() {
+            menu.style.left = menu.style.left === '0px' ? '-200px' : '0px';
+        });
+    </script>
+    <!-- Your menu content goes here -->
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection</title>
+
+    <style>
+          
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Montserrat", sans-serif;
+        }
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(gate.jpg);
+            background-position: center;
+            background-size: cover;
+            position:absolute;
+        }
+
+        .dashboard {
+            text-align: center;
+            margin-top: 100px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: rgba(200, 200, 200, 0.8); /* Adjust transparency as needed */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;/* Adjust the width as needed */
+        }
+
+        .dashboard-options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dashboard-options li {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-options li a {
+            text-decoration: none;
+            display: block;
+            padding: 15px 20px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .dashboard-options li a:hover {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .option-name {
+            color: rgb(3, 1, 1);
+            font-size: 15px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="dashboard">
+            <h1>SIGN UP AS</h1>
+            <ul class="dashboard-options">
+                <li>
+                    <a href="registerStaff.html">
+                        <i class='bx bx-bell'></i>
+                        <span class="option-name">STAFF</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="register.html">
+                        <i class='bx bx-pie-chart-alt-2'></i>
+                        <span class="option-name">RESIDENT</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="registerAdmin.html">
+                        <i class='bx bx-user'></i>
+                        <span class="option-name">ADMIN</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* .form-g{
+   width: 250px;
+   height: 380px;
+   background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+   position: absolute;
+   top: -20;
+   left: 450px; ;
+   border-radius: 10px;
+   padding: 25px;
+
+ }
+ .form-g h2{
+   width: 200px;
+   text-align: center;
+   color: #fff;
+   font-size: 22px;
+   background-color: #dbae5f;
+   border-radius: 10px;
+   margin: 2px;
+   padding: 8px;
+ }
+ .form-g input{
+     width: 240px;
+     height:35px;
+     background: transparent;
+                border-bottom: 1px solid #dbae5f border-top:none;
+     border-right:none;
+     border-left: none;
+     color: #fff;
+     font-size:15px;
+     letter-spacing:1px;
+     margin-top:30px;
+  
+ }*/

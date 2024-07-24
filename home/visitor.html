@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Montserrat", sans-serif;
+        }
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(housess.jpg);
+            background-position: center;
+            background-size: cover;
+            position: absolute; 
+        }
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 240px;
+            background: #d8d1c7;
+            transition: all 0.5s ease;
+            z-index: 1; /* Add z-index to show above other content */
+        }
+        .sidebar.active {
+            width: 60px;
+        }
+        .sidebar .logo-details {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .logo-details i {
+            font-size: 28px;
+            font-weight: 500;
+            color: rgb(3, 1, 1);
+            min-width: 60px;
+            text-align: center;
+        }
+        .sidebar .logo-details .logo_name {
+            color: rgb(3, 1, 1);
+            font-size: 24px;
+            font-weight: 500;
+            margin-left: 7px;
+        }
+        .sidebar .nav-links {
+            margin-top: 10px;
+        }
+        .sidebar .nav-links li {
+            position: relative;
+            list-style: none;
+            height: 50px;
+        }
+        .sidebar .nav-links li a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+        .sidebar .nav-links li a.active {
+            background: #a6a29a;
+        }
+        .sidebar .nav-links li a:hover {
+            background: #a6a29a;
+        }
+        .sidebar .nav-links li i {
+            min-width: 60px;
+            text-align: center;
+            font-size: 18px;
+            color: rgb(3, 1, 1);
+        }
+        .sidebar .nav-links li a .links_name {
+            color: rgb(3, 1, 1);
+            font-size: 15px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .sidebar .nav-links .log_out {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .home-section nav {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            background: #d8d1c7;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: calc(100% - 240px);
+            left: 240px;
+            right: 10px;
+            z-index: 50;
+            padding: 0 20px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        .home-section nav .profile-details {
+            display: flex;
+            align-items: center;
+            margin-right: 50px;
+            border: 2px solid #efeef1;
+            border-radius: 6px;
+            height: 50px;
+            min-width: 90px;
+            padding: 0 15px 0 2px;
+        }
+        nav .profile-details .admin_name {
+            font-size: 15px;
+            font-weight: 500;
+            margin-right: 40px;
+            color: #333;
+            margin: 0 10px;
+            white-space: nowrap;
+        }
+        nav .profile-details i {
+            font-size: 25px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            width: 80%;
+            
+            max-width: 400px;
+            margin-top: 350px;
+            margin: 90px auto; /* Center the form horizontally and adjust top margin */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select { /* Adjust styling for select element */
+            width: 100%; /* Make select element full width */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #confirmationMessage {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: rgb(245, 247, 245);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <div class="sidebar">
+            <div class="logo-details">
+                <a href="#">
+                    <span class="logo_name"><i class="fa fa-home"></i>RA HOUSING</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="resident.html">
+                        <span class="links_name"><i class="fa fa-bars" aria-hidden="true"></i>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="announcement_viewer.html">
+                        <span class="links_name"><i class="fa fa-bullhorn" aria-hidden="true"></i>Announcement</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="maintainance.html">
+                        <span class="links_name"><i class="fa fa-building" aria-hidden="true"></i>Maintenance Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="active">
+                        <span class="links_name"><i class="fa fa-users" aria-hidden="true"></i>Visitor</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ResidentViewEvent.html">
+                        <span class="links_name"><i class="fa fa-calendar-o" aria-hidden="true"></i>Events</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="BookFacility.html">
+                        <span class="links_name"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Book Facility</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lost_found.html">
+                        <span class="links_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i>Lost and Found</span>
+                    </a>
+                </li>
+                <li class="log_out">
+                    <a href="index.html">
+                        <span class="links_name"><i class="fa fa-sign-out" aria-hidden="true"></i>Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <form id="visitorForm" action="visitor.php" method="POST">
+            <h1>Visitor Form</h1>
+            <label for="visitorName">Visitor Name:</label>
+            <input type="text" id="visitorName" name="visitorName" required><br>
+            <label for="visitDate">Date of Visit:</label>
+            <input type="date" id="visitDate" name="visitDate" required><br>
+            <label for="visitorType">Visitor Type:</label>
+            <select id="visitorType" name="visitorType" required>
+                <option value="single">Single</option>
+                <option value="family">Family</option>
+            </select><br>   
+            <input type="submit" value="Submit">
+        </form>
+        <div id="confirmationMessage" style="display: none; text-align: center; margin-top: 20px;">
+            <p>Thank you for your submission!</p>
+        </div>
+        
+    </section>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="Announcement">VISITOR</span>
+            </div>
+            <div class="profile-details">
+                <a href=""><span class="admin_name"><i class="fa fa-user-circle-o" aria-hidden="true">RESIDENT</i></span></a>
+            </div>
+        </nav>
+    </section>
+    <script>
+        document.getElementById('visitorForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            // Get form values
+            const visitorName = document.getElementById('visitorName').value;
+            const visitDate = document.getElementById('visitDate').value;
+            const visitorType = document.getElementById('visitorType').value;
+            // Create an XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            // Configure the request
+            xhr.open('POST', 'visitor.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // Define the callback function
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Request was successful
+                        console.log(xhr.responseText);
+                        // Show confirmation message
+                        document.getElementById('confirmationMessage').style.display = 'block';
+                    } else {
+                        // Request failed
+                        console.error('Error:', xhr.status);
+                    }
+                }
+            };
+            // Prepare the form data
+            const formData = new FormData();
+            formData.append('visitorName', visitorName);
+            formData.append('visitDate', visitDate);
+            formData.append('visitorType', visitorType);
+            // Send the request with form data
+            xhr.send(new URLSearchParams(formData));
+            // Optionally, reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
